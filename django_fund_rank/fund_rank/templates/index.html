@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+{% load staticfiles %}
+<link href="{% static "datatables/css/jquery.dataTables.min.css" %}" rel="stylesheet" media="screen">
+<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+<script type="text/javascript"  src="{% static "jquery/jquery-1.12.4.js" %}"></script>
+<script src="{% static "datatables/js/jquery.dataTables.min.js" %}"></script>
+<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+<script type="text/javascript">
+$.fn.dataTable.ext.search.push(
+	    function( settings, data, dataIndex ) {
+	        var min = parseFloat( $('#minWeek').val(), 4 );
+	        var max = parseFloat( $('#maxWeek').val(), 4 );
+	        var age = parseFloat( data[7] ) || 0; // use data for the age column
+	        if ( ( isNaN( min ) && isNaN( max ) ) ||
+	             ( isNaN( min ) && age <= max ) ||
+	             ( min <= age   && isNaN( max ) ) ||
+	             ( min <= age   && age <= max ) )
+	        {
+	            return true;
+	        }
+	        return false;
+	    }	    
+	);
+$.fn.dataTable.ext.search.push(
+	    function( settings, data, dataIndex ) {
+	        var min = parseFloat( $('#minMonth').val(), 4 );
+	        var max = parseFloat( $('#maxMonth').val(), 4 );
+	        var age = parseFloat( data[8] ) || 0; // use data for the age column
+	        if ( ( isNaN( min ) && isNaN( max ) ) ||
+	             ( isNaN( min ) && age <= max ) ||
+	             ( min <= age   && isNaN( max ) ) ||
+	             ( min <= age   && age <= max ) )
+	        {
+	            return true;
+	        }
+	        return false;
+	    }	    
+	);	
+$.fn.dataTable.ext.search.push(
+	    function( settings, data, dataIndex ) {
+	        var min = parseFloat( $('#minThreeMonth').val(), 4 );
+	        var max = parseFloat( $('#maxThreeMonth').val(), 4 );
+	        var age = parseFloat( data[9] ) || 0; // use data for the age column
+	        if ( ( isNaN( min ) && isNaN( max ) ) ||
+	             ( isNaN( min ) && age <= max ) ||
+	             ( min <= age   && isNaN( max ) ) ||
+	             ( min <= age   && age <= max ) )
+	        {
+	            return true;
+	        }
+	        return false;
+	    }	    
+	);	
+$.fn.dataTable.ext.search.push(
+	    function( settings, data, dataIndex ) {
+	        var min = parseFloat( $('#minSixMonth').val(), 4 );
+	        var max = parseFloat( $('#maxSixMonth').val(), 4 );
+	        var age = parseFloat( data[10] ) || 0; // use data for the age column
+	        if ( ( isNaN( min ) && isNaN( max ) ) ||
+	             ( isNaN( min ) && age <= max ) ||
+	             ( min <= age   && isNaN( max ) ) ||
+	             ( min <= age   && age <= max ) )
+	        {
+	            return true;
+	        }
+	        return false;
+	    }	    
+	);
+$.fn.dataTable.ext.search.push(
+	    function( settings, data, dataIndex ) {
+	        var min = parseFloat( $('#minOneYear').val(), 4 );
+	        var max = parseFloat( $('#maxOneYear').val(), 4 );
+	        var age = parseFloat( data[11] ) || 0; // use data for the age column
+	        if ( ( isNaN( min ) && isNaN( max ) ) ||
+	             ( isNaN( min ) && age <= max ) ||
+	             ( min <= age   && isNaN( max ) ) ||
+	             ( min <= age   && age <= max ) )
+	        {
+	            return true;
+	        }
+	        return false;
+	    }	    
+	);
+$.fn.dataTable.ext.search.push(
+	    function( settings, data, dataIndex ) {
+	        var min = parseFloat( $('#minTwoYear').val(), 4 );
+	        var max = parseFloat( $('#maxTwoYear').val(), 4 );
+	        var age = parseFloat( data[12] ) || 0; // use data for the age column
+	        if ( ( isNaN( min ) && isNaN( max ) ) ||
+	             ( isNaN( min ) && age <= max ) ||
+	             ( min <= age   && isNaN( max ) ) ||
+	             ( min <= age   && age <= max ) )
+	        {
+	            return true;
+	        }
+	        return false;
+	    }	    
+	);
+$.fn.dataTable.ext.search.push(
+	    function( settings, data, dataIndex ) {
+	        var min = parseFloat( $('#minThreeYear').val(), 4 );
+	        var max = parseFloat( $('#maxThreeYear').val(), 4 );
+	        var age = parseFloat( data[13] ) || 0; // use data for the age column
+	        if ( ( isNaN( min ) && isNaN( max ) ) ||
+	             ( isNaN( min ) && age <= max ) ||
+	             ( min <= age   && isNaN( max ) ) ||
+	             ( min <= age   && age <= max ) )
+	        {
+	            return true;
+	        }
+	        return false;
+	    }	    
+	);
+$.fn.dataTable.ext.search.push(
+	    function( settings, data, dataIndex ) {
+	        var min = parseFloat( $('#minThisYear').val(), 4 );
+	        var max = parseFloat( $('#maxThisYear').val(), 4 );
+	        var age = parseFloat( data[14] ) || 0; // use data for the age column
+	        if ( ( isNaN( min ) && isNaN( max ) ) ||
+	             ( isNaN( min ) && age <= max ) ||
+	             ( min <= age   && isNaN( max ) ) ||
+	             ( min <= age   && age <= max ) )
+	        {
+	            return true;
+	        }
+	        return false;
+	    }	    
+	);
+$.fn.dataTable.ext.search.push(
+	    function( settings, data, dataIndex ) {
+	        var min = parseFloat( $('#minSetUp').val(), 4 );
+	        var max = parseFloat( $('#maxSetUp').val(), 4 );
+	        var age = parseFloat( data[15] ) || 0; // use data for the age column
+	        if ( ( isNaN( min ) && isNaN( max ) ) ||
+	             ( isNaN( min ) && age <= max ) ||
+	             ( min <= age   && isNaN( max ) ) ||
+	             ( min <= age   && age <= max ) )
+	        {
+	            return true;
+	        }
+	        return false;
+	    }	    
+	);
+$(document).ready(function() {
+
+    $('#example').DataTable( {
+        "ajax": {
+            "url": "/getFundRankList",
+            "dataSrc": ""
+        },
+        "columns": [
+        { "data": "fields.category" },
+		{ "data": "fields.fund_id" },
+        { "data": "fields.fund_name" },
+		{ "data": "fields.cal_date" },
+        { "data": "fields.net_asset_value" },
+		{ "data": "fields.accumulative" },
+		{ "data": "fields.oneday" },
+		{ "data": "fields.oneweek" },
+		{ "data": "fields.onemonth" },
+		{ "data": "fields.threemonth" },
+		{ "data": "fields.sixmonth" },
+		{ "data": "fields.oneyear" },
+		{ "data": "fields.twoyear" },
+		{ "data": "fields.threeyear" },
+		{ "data": "fields.thisyear" },
+		{ "data": "fields.setup" }
+        ]
+    } );
+    
+	var table = $('#example').DataTable();
+    // Event listener to the two range filtering inputs to redraw on input
+    $('#minWeek, #maxWeek,#minMonth,#maxMonth,#minThreeMonth,#maxThreeMonth,#minSixMonth,#maxSixMonth,#minOneYear,#maxOneYear,#minTwoYear,#maxTwoYear,#minThreeYear,#maxThreeYear,#minThisYear,#maxThisYear,#minSetUp,#maxSetUp').keyup( function() {
+        table.draw();
+    } );
+    
+ // Setup - add a text input to each footer cell
+    $('#example tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" class="input-mini" placeholder="查找'+title+'" />' );
+    } );
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that.search( this.value ).draw();
+            }
+        } );
+    } );
+} );
+</script>
+<style type="text/css">
+input {width:70px}
+td {width:20px}
+th {width:20px}
+</style>
+</head>
+<body>
+<table class="table table-bordered table-condensed " contenteditable="true">
+	<thead>
+		<tr class="success">
+			<th>筛选</th>
+			<th>周</th>
+			<th>月</th>
+			<th>3月</th>
+			<th>6月</th>
+			<th>1年</th>
+			<th>2年</th>
+			<th>3年</th>
+			<th>今年</th>
+			<th>成立</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>最小:</td>
+			<td><input class="input-mini" id="minWeek" type="text"></td>
+			<td><input class="input-mini" id="minMonth" type="text"></td>
+			<td><input class="input-mini" id="minThreeMonth" type="text"></td>
+			<td><input class="input-mini" id="minSixMonth" type="text"></td>
+			<td><input class="input-mini" id="minOneYear" type="text"></td>
+			<td><input class="input-mini" id="minTwoYear" type="text"></td>
+			<td><input class="input-mini" id="minThreeYear" type="text"></td>
+			<td><input class="input-mini" id="minThisYear" type="text"></td>
+			<td><input class="input-mini" id="minSetUp" type="text"></td>
+		</tr>
+		<tr>
+			<td>最大:</td>
+			<td><input class="input-mini" id="maxWeek" type="text"></td>
+			<td><input class="input-mini" id="maxMonth" type="text"></td>
+			<td><input class="input-mini" id="maxThreeMonth" type="text"></td>
+			<td><input class="input-mini" id="maxSixMonth" type="text"></td>
+			<td><input class="input-mini" id="maxOneYear" type="text"></td>
+			<td><input class="input-mini" id="maxTwoYear" type="text"></td>
+			<td><input class="input-mini" id="maxThreeYear" type="text"></td>
+			<td><input class="input-mini" id="maxThisYear" type="text"></td>
+			<td><input class="input-mini" id="maxSetUp" type="text"></td>
+		</tr>
+	</tbody>
+</table>
+<table id="example" class="cell-border"  width="100%" cellspacing="0">
+        <thead>
+                <tr class="success">
+                       <th>
+							类别
+						</th>
+						<th>
+							id
+						</th>
+						<th>
+							名称
+						</th>
+						<th>
+							日期
+						</th>
+						<th>
+							单位
+						</th>
+						<th>
+							累计
+						</th>
+						<th>
+							天
+						</th>
+						<th>
+							周
+						</th>
+						<th>
+							月
+						</th>
+						<th>
+							3月
+						</th>
+						<th>
+							6月
+						</th>
+						<th>
+							1年
+						</th>
+						<th>
+							2年
+						</th>
+						<th>
+							3年
+						</th>
+						<th>
+							今年
+						</th>
+						<th>
+						   成立
+						</th>
+            </tr>
+        </thead>
+        <tfoot>
+                <tr class="success">
+                       <th>
+							类别
+						</th>
+						<th>
+							id
+						</th>
+						<th>
+							名称
+						</th>
+						<th>
+							日期
+						</th>
+						<th>
+							单位净值
+						</th>
+						<th>
+							累计净值
+						</th>
+						<th>
+							天
+						</th>
+						<th>
+							周
+						</th>
+						<th>
+							月
+						</th>
+						<th>
+							3月
+						</th>
+						<th>
+							6月
+						</th>
+						<th>
+							1年
+						</th>
+						<th>
+							2年
+						</th>
+						<th>
+							3年
+						</th>
+						<th>
+							今年
+						</th>
+						<th>
+						   成立以来
+						</th>
+            </tr>
+        </tfoot>
+    </table>
+    <iframe src="http://fund.eastmoney.com/Compare/" style="width:100%;height:600px;"></iframe>
+</html>

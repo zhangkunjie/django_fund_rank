@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+{% load staticfiles %}
+<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+<script type="text/javascript"  src="{% static "js/jquery-1.11.3.min.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script type="text/javascript">
+function getStudentInfoFun(obj)
+{
+	$.ajax({
+		  url: "/getStudentInfo",
+		  data: {
+		    id: $("#sid").val()
+		  },
+		  success: function( data ) {
+		  studentInfo="<tr><td>"+data.id+"</td><td>"+data.name+"</td><td>"+data.sex+"</td><td>"+data.age+"</td></tr>"
+		  //$("#tbody").html(studentInfo)
+		  }
+		});
+}
+
+function getStudentInfoFun(obj)
+{
+	$.ajax({
+		  url: "/getFundRankList",
+		  data: {
+		  },
+		  success: function( data ) {
+		  //alert(data)
+		  var  fundrank_html="";
+		  for(var i=0;i<data.length;i++)
+			  {
+			  fundrank_html+="<tr><td>"+data[i].fields.fund_id+"</td><td>"+data[i].fields.fund_name+"</td><td>"+data[i].fields.cal_date+"</td><td>"+data[i].fields.net_asset_value+"</td><td>"+data[i].fields.accumulative+"</td><td>"+data[i].fields.oneday+"</td><td>"+data[i].fields.oneweek+"</td><td>"+data[i].fields.onemonth+"</td><td>"+data[i].fields.threemonth+"</td><td>"+data[i].fields.sixmonth+"</td><td>"+data[i].fields.oneyear+"</td><td>"+data[i].fields.twoyear+"</td><td>"+data[i].fields.threeyear+"</td><td>"+data[i].fields.thisyear+"</td><td>"+data[i].fields.setup+"</td></tr>"
+			  }
+		  //alert(fundrank_html)
+		  $("#tbody").html(fundrank_html)
+		  }
+		});
+}
+</script>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<form class="form-inline">
+				<table class="table">
+					<tbody>
+						<tr>
+							<td>
+								<fieldset>
+									 <label>1天:</label>
+									<div class="btn-group">
+										<button class="btn">&gt;=</button><button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li>
+												<a>&gt;</a>
+											</li>
+											<li>
+												<a>&lt;=</a>
+											</li>
+											<li>
+												<a>&lt;</a>
+											</li>
+											<li>
+												<a>=</a>
+											</li>
+										</ul>
+									</div><input class="input-mini" type="text" />
+								</fieldset>
+							</td>
+							<td>
+								<fieldset>
+									 <label>1周:</label>
+									<div class="btn-group">
+										<button class="btn">&gt;=</button><button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li>
+												<a>&gt;</a>
+											</li>
+											<li>
+												<a>&lt;=</a>
+											</li>
+											<li>
+												<a>&lt;</a>
+											</li>
+											<li>
+												<a>=</a>
+											</li>
+										</ul>
+									</div><input class="input-mini" type="text" />
+								</fieldset>
+							</td>
+							<td>
+								<fieldset>
+									 <label>1月:</label>
+									<div class="btn-group">
+										<button class="btn">&gt;=</button><button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li>
+												<a>&gt;</a>
+											</li>
+											<li>
+												<a>&lt;=</a>
+											</li>
+											<li>
+												<a>&lt;</a>
+											</li>
+											<li>
+												<a>=</a>
+											</li>
+										</ul>
+									</div><input class="input-mini" type="text" />
+								</fieldset>
+							</td>
+							<td>
+								<fieldset>
+									 <label>3月:</label>
+									<div class="btn-group">
+										<button class="btn">&gt;=</button><button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li>
+												<a>&gt;</a>
+											</li>
+											<li>
+												<a>&lt;=</a>
+											</li>
+											<li>
+												<a>&lt;</a>
+											</li>
+											<li>
+												<a>=</a>
+											</li>
+										</ul>
+									</div><input class="input-mini" type="text" />
+								</fieldset>
+							</td>
+							<td>
+								<fieldset>
+									 <label>6月:</label>
+									<div class="btn-group">
+										<button class="btn">&gt;=</button><button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li>
+												<a>&gt;</a>
+											</li>
+											<li>
+												<a>&lt;=</a>
+											</li>
+											<li>
+												<a>&lt;</a>
+											</li>
+											<li>
+												<a>=</a>
+											</li>
+										</ul>
+									</div><input class="input-mini" type="text" />
+								</fieldset>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<fieldset>
+									 <label>1年:</label>
+									<div class="btn-group">
+										<button class="btn">&gt;=</button><button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li>
+												<a>&gt;</a>
+											</li>
+											<li>
+												<a>&lt;=</a>
+											</li>
+											<li>
+												<a>&lt;</a>
+											</li>
+											<li>
+												<a>=</a>
+											</li>
+										</ul>
+									</div><input class="input-mini" type="text" />
+								</fieldset>
+							</td>
+							<td>
+								<fieldset>
+									 <label>2年:</label>
+									<div class="btn-group">
+										<button class="btn">&gt;=</button><button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li>
+												<a>&gt;</a>
+											</li>
+											<li>
+												<a>&lt;=</a>
+											</li>
+											<li>
+												<a>&lt;</a>
+											</li>
+											<li>
+												<a>=</a>
+											</li>
+										</ul>
+									</div><input class="input-mini" type="text" />
+								</fieldset>
+							</td>
+							<td>
+								<fieldset>
+									 <label>3年:</label>
+									<div class="btn-group">
+										<button class="btn">&gt;=</button><button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li>
+												<a>&gt;</a>
+											</li>
+											<li>
+												<a>&lt;=</a>
+											</li>
+											<li>
+												<a>&lt;</a>
+											</li>
+											<li>
+												<a>=</a>
+											</li>
+										</ul>
+									</div><input class="input-mini" type="text" />
+								</fieldset>
+							</td>
+							<td>
+								<fieldset>
+									 <label>成立:</label>
+									<div class="btn-group">
+										<button class="btn">&gt;=</button><button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li>
+												<a>&gt;</a>
+											</li>
+											<li>
+												<a>&lt;=</a>
+											</li>
+											<li>
+												<a>&lt;</a>
+											</li>
+											<li>
+												<a>=</a>
+											</li>
+										</ul>
+									</div><input class="input-mini" type="text" />
+								</fieldset>
+							</td>
+							<td>
+								<fieldset>
+									 <label>今年:</label>
+									<div class="btn-group">
+										<button class="btn">&gt;=</button><button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+										<ul class="dropdown-menu">
+											<li>
+												<a>&gt;</a>
+											</li>
+											<li>
+												<a>&lt;=</a>
+											</li>
+											<li>
+												<a>&lt;</a>
+											</li>
+											<li>
+												<a>=</a>
+											</li>
+										</ul>
+									</div><input class="input-mini" type="text" />
+								</fieldset>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							</td>
+							<td>
+							</td>
+							<td>
+								 <button class="btn" type="button" onclick='getStudentInfoFun(this)'>提交</button> <button class="btn" type="reset">重置</button>
+							</td>
+							<td>
+							</td>
+							<td>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<table class="table table-hover table-striped">
+				<thead>
+					<tr class="success">
+						<th>
+							基金id
+						</th>
+						<th>
+							名称
+						</th>
+						<th>
+							日期
+						</th>
+						<th>
+							单位净值
+						</th>
+						<th>
+							累计净值
+						</th>
+						<th>
+							天
+						</th>
+						<th>
+							周
+						</th>
+						<th>
+							月
+						</th>
+						<th>
+							3月
+						</th>
+						<th>
+							6月
+						</th>
+						<th>
+							1年
+						</th>
+						<th>
+							2年
+						</th>
+						<th>
+							3年
+						</th>
+						<th>
+							今年
+						</th>
+						<th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 327px;" aria-label="Platform(s): activate to sort column ascending">成立</th>
+					</tr>
+				</thead>
+				<tbody id="tbody">
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<p>ajax应用获取学生信息{% static "js/jquery-1.11.3.min.js" %}</p>
+学号：<input type="text" name="sid" id="sid"/>
+<input type="button" value="获取学生信息" onclick="getStudentInfoFun()">
+<table border="1" >
+ <tr><td>学号</td><td>姓名</td><td>性别</td><td>年龄</td></tr>
+ <tbody></tbody>
+</table>
+<h3>CSRF（Cross-site request forgery跨站请求伪造，也被称为“one click attack”或者session riding，通常缩写为CSRF或者XSRF，
+ 是一种对网站的恶意利用。 尽管听起来像跨站脚本（XSS），但它与XSS非常不同，并且攻击方式几乎相左。XSS利用站点内的信任用户， 而CSRF则通过伪装来自受信任用户的请求来
+ 利用受信任的网站。与XSS攻击相比，CSRF攻击往往不大流行（因此对其进行防范的资源也相当稀少）和难以防范，所以被认为比XSS更具危险性。
+Django 中自带了 防止CSRF攻击的功能，但是一些新手不知道如何使用，给自己编程带来了麻烦。常常会出现下面django csrf token missing or incorrect的错误。</h3>
+1对于form:加入 "{\% csrf_token \%}"
+<xmp>
+<div style="width:300px;height:200px;border:1px dashed red" ></div>
+<form method="POST" action="/post-url/">
+    {\% csrf_token \%}
+    <input name='zqxt' value="自强学堂学习Django技术">
+</form>
+</xmp>
+1对于ajax:在模板中加入"{\% csrf_token \%}"
+<xmp>
+$.ajaxSetup({
+    data: {csrfmiddlewaretoken: '"{\% csrf_token \%}"' },
+});
+</xmp>
+</body>
+</html>
