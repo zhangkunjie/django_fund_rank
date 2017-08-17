@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     #这里使用的正则表达式进行url的匹配
     url(r'^$', views.index),
+    url(r'^fundindex', views.fundindex),
     url(r'^getStudentInfo$', views.getStudentInfo),# Notice this line
     url(r'^getFundRankList$', views.getFundRankList),# Notice this line
 
