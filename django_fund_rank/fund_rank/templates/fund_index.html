@@ -21,7 +21,7 @@ function  initSearchData(data)
    else  
 	 return data; 
 }
-$(document).ready(function() {	
+$(document).ready(function() {
 	var searchParams={
 			 "minWeek":initSearchData($("#minWeek").val()),
 			 "minMonth":initSearchData($("#minMonth").val()),
@@ -31,10 +31,13 @@ $(document).ready(function() {
 			 "minTwoYear":initSearchData($("#minTwoYear").val()),
 			 "minThreeYear":initSearchData($("#minThreeYear").val()),
 			 "minThisYear":initSearchData($("#minThisYear").val()),
-			 "minSetUp":initSearchData($("#minSetUp").val())
+			 "minSetUp":initSearchData($("#minSetUp").val()),
+			 "minScore":initSearchData($("#minScore").val()),
+			 "select_category":$("#select_category").val()
 			 }
     $('#example').DataTable( {
       	serverSide: true,
+      	searching:false,
         "ajax": {
             "url": "/getFundRankList",
             	"data":searchParams
@@ -56,7 +59,8 @@ $(document).ready(function() {
 		{ "data": "fields.twoyear" },
 		{ "data": "fields.threeyear" },
 		{ "data": "fields.thisyear" },
-		{ "data": "fields.setup" }
+		{ "data": "fields.setup" },
+		{ "data": "fields.score" }
         ]
     } );
 } );	
@@ -71,13 +75,16 @@ function  searchFundFun()
 			 "minTwoYear":initSearchData($("#minTwoYear").val()),
 			 "minThreeYear":initSearchData($("#minThreeYear").val()),
 			 "minThisYear":initSearchData($("#minThisYear").val()),
-			 "minSetUp":initSearchData($("#minSetUp").val())
+			 "minSetUp":initSearchData($("#minSetUp").val()),
+			 "minScore":initSearchData($("#minScore").val()),
+			 "select_category":$("#select_category").val()
 			 }
    $('#example').DataTable( {
      	serverSide: true,
+      	searching:false,
        "ajax": {
            "url": "/getFundRankList",
-           	"data":searchParams
+            "data":searchParams
        },
        destroy:true,
        "columns": [
@@ -96,7 +103,8 @@ function  searchFundFun()
 		{ "data": "fields.twoyear" },
 		{ "data": "fields.threeyear" },
 		{ "data": "fields.thisyear" },
-		{ "data": "fields.setup" }
+		{ "data": "fields.setup" },
+		{ "data": "fields.score" }
        ]
    } );
 }
@@ -110,7 +118,8 @@ input {width:70px}
 <table class="table table-bordered table-condensed " contenteditable="true">
 	<thead>
 		<tr class="success">
-			<th>筛选</th>
+		    <th>类别</th>
+			<th>大小</th>
 			<th>周</th>
 			<th>月</th>
 			<th>3月</th>
@@ -120,12 +129,26 @@ input {width:70px}
 			<th>3年</th>
 			<th>今年</th>
 			<th>成立</th>
+			<th>得分</th>
 		</tr>
 	</thead>
 	<tbody>
 	<form >
 		<tr>
-			<td>最小:</td>
+		    <td>
+		    <select name='select_category' id="select_category" onchange="searchFundFun()">
+		       <option value="bb,gp,hh,lof,qdii,zq,zs">全部</option>
+		       <option value="gp">股票</option>
+		       <option value="hh">混合</option>
+		       <option value="zs">指数</option>
+		       <option value="qdii">qdii</option>
+		       <option value="zq">债券</option>
+		       <option value="bb">保本</option>
+		       <option value="lof">lof</option>
+            </select>
+		    </td>
+			<td>最小:
+			</td>
 			<td><input class="input-mini" id="minWeek" type="text" ></td>
 			<td><input class="input-mini" id="minMonth" type="text" ></td>
 			<td><input class="input-mini" id="minThreeMonth" type="text"></td>
@@ -135,7 +158,9 @@ input {width:70px}
 			<td><input class="input-mini" id="minThreeYear" type="text" ></td>
 			<td><input class="input-mini" id="minThisYear" type="text"></td>
 			<td><input class="input-mini" id="minSetUp" type="text"></td>
+			<td><input class="input-mini" id="minScore" type="text"></td>
 		</tr>
+		<!-- 
 		<tr>
 			<td>最大:</td>
 			<td><input class="input-mini" id="maxWeek" type="text"></td>
@@ -147,9 +172,11 @@ input {width:70px}
 			<td><input class="input-mini" id="maxThreeYear" type="text"></td>
 			<td><input class="input-mini" id="maxThisYear" type="text"></td>
 			<td><input class="input-mini" id="maxSetUp" type="text"></td>
-		</tr>
+			<td><input class="input-mini" id="maxScore" type="text"></td>
+		</tr> 
+		-->
 		<tr>
-		<td colspan="10"><input  class="input-mini" type="button"  onclick="searchFundFun()" value="查询"><input class="input-mini" type="reset" value="重置"></td>
+		<td colspan="12"><input  class="input-mini" type="button"  onclick="searchFundFun()" value="查询"><input class="input-mini" type="reset" value="重置"></td>
 		</tr>
 		</form>
 	</tbody>
@@ -205,6 +232,9 @@ input {width:70px}
 						</th>
 						<th>
 						   成立
+						</th>
+						<th>
+						  得分
 						</th>
             </tr>
         </thead>

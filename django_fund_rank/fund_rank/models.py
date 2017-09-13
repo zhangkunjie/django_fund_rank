@@ -41,6 +41,7 @@ class FundRank(models.Model):
     threeyear=models.FloatField()
     thisyear=models.FloatField()
     setup=models.FloatField()
+    score=models.FloatField()
     category=models.CharField(max_length=20)
     class Meta:
          db_table ='fund_rank'  
